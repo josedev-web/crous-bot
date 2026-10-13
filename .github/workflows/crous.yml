@@ -17,8 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 7
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - run: pip install requests beautifulsoup4
@@ -32,4 +32,8 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add seen.json
-          git diff --cached --quiet || (git commit -m "maj état" && git push)
+          if ! git diff --cached --quiet; then
+            git commit -m "maj état"
+            git pull --rebase -X theirs origin main
+            git push
+          fi
