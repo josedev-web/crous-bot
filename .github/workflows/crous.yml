@@ -2,7 +2,7 @@ name: Surveillance CROUS
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "4,19,34,49 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -15,7 +15,7 @@ concurrency:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 7
+    timeout-minutes: 17
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
@@ -35,5 +35,7 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "maj état"
             git pull --rebase -X theirs origin main
+            git push
+          fi            git pull --rebase -X theirs origin main
             git push
           fi
