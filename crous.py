@@ -19,7 +19,7 @@ URLS = [
 BASE = "https://trouverunlogement.lescrous.fr"
 FICHIER = "seen.json"
 MAX_PAGES = 10
-NB_VERIFICATIONS = 5    # nombre de vérifications par exécution
+NB_VERIFICATIONS = 14    # nombre de vérifications par exécution
 PAUSE = 60              # secondes entre deux vérifications
 RAPPEL_MINUTES = 60     # rappel des logements disponibles (0 = désactivé)
 
